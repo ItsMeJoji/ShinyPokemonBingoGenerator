@@ -1669,7 +1669,9 @@ input, select, textarea {
     min-height: 300px; /* Adjust as needed */
     overflow: auto;
 }
-
+#bingoTableWrapper {
+	padding: 10px; /* Add padding around the table */
+}
 #bingoTable img {
     width: 100%;
     height: auto;
