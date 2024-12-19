@@ -1,0 +1,58 @@
+﻿@model ShinyPokemonBingoGenerator.Models.BingoCardModel
+@{
+    ViewBag.Title = "Shiny Bingo Card";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Shiny Bingo Generator</h1>
+</div>
+
+<div class="text-center">
+    <form method="post">
+    <button id="generateButton" class="btn btn-primary" asp-action="Generate">Generate Bingo Card</button>
+    <br>
+    <br>
+    @if (ViewBag.ShowTable == true)
+    {
+    <table id="bingoTable" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>B</th>
+                <th>I</th>
+                <th>N</th>
+                <th>G</th>
+                <th>O</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < 5; i++)
+            {
+                <tr>
+                    @for (int j = 0; j < 5; j++)
+                    {
+                        <td><img src="@Model.ImageUrls[i, j]" alt="Image @(i * 5 + j + 1)" class="img-fluid" /></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button id="exportButton" class="btn btn-primary">Export as PNG</button>
+    }
+    </form>
+</div>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script>
+        document.getElementById('exportButton').addEventListener('click', function () {
+            html2canvas(document.getElementById('bingoTable'), {
+                onrendered: function (canvas) {
+                    var link = document.createElement('a');
+                    link.href = canvas.toDataURL();
+                    link.download = 'bingoTable.png';
+                    link.click();
+                }
+            });
+        });
+    </script>
+}
