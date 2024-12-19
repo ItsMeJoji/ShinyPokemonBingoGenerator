@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShinyPokemonBingoGenerator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d743a0126019a16ae2b7e318d1c5f06e63771e15")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+037e43465f3b607898a719745d00375b4ff5681a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShinyPokemonBingoGenerator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShinyPokemonBingoGenerator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
