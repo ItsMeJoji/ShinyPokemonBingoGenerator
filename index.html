@@ -21,7 +21,25 @@
                             <nav>
                                 <ul>
                                     <li><button id="exportButton">Export as PNG</button></li>
-                                    <li><button id="freeSpaceButton">Set Free Space:</button><button><input id="freeSpaceNumber" min="1" max="1025" placeholder="  Enter #" /></button></li>
+                                    <li>
+                                        <div class="button-group">
+                                        <button>Free Space: </button>
+                                        <button>
+                                            <input id="freeSpaceNumber" min="1" max="1025" placeholder="Enter #" />
+                                        </button>
+                                            <select id="freeSpaceGeneration">
+                                                <option value="SV">SV</option>
+                                                <option value="SS">SS</option>
+                                                <option value="XY">XY</option>
+                                                <option value="BW">BW</option>
+                                                <option value="HGSS">HGSS</option>
+                                                <option value="DPPT">DPPT</option>
+                                                <option value="RSE">RSE</option>
+                                                <option value="GSC">GSC</option>
+                                            </select>
+                                        <button id="freeSpaceButton">Set</button>
+                                    </div>
+                                    </li>
                                     <li><button><a href="#intro">How to Use...</a></button></li>
                                 </ul>
                             </nav>
@@ -32,11 +50,11 @@
 								<table id="bingoTable" class="table table-bordered">
 									<thead>
 										<tr>
-											<th>B</th>
-											<th>I</th>
-											<th>N</th>
-											<th>G</th>
-											<th>O</th>
+											<th style="text-align: center; padding-top: 30px;"><H1>B</H1></th>
+											<th style="text-align: center;"><H1>I</H1></th>
+											<th style="text-align: center;"><H1>N</H1></th>
+											<th style="text-align: center;"><H1>G</H1></th>
+											<th style="text-align: center;"><H1>O</H1></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -117,23 +135,53 @@
 
                                 // Add click event listener to update image URL on click
                                 $('#bingoTable img').on('click', function() {
-                                    var randomNum = Math.floor(Math.random() * 1025) + 1;
-                                    var formattedNum = randomNum.toString().padStart(3, '0');
-                                    var newUrl = 'images/Pokemon/SV/' + formattedNum + '.png';
-                                    $(this).attr('src', newUrl);
+                                    var $img = $(this);
+                                    var folders = ['SV', 'SS', 'XY', 'BW', 'DPPT', 'HGSS', 'GSC', 'RSE']; // Add more folders as needed
+                                    var isValidImage = false;
+
+                                    function tryLoadImage() {
+                                        var randomFolder = folders[Math.floor(Math.random() * folders.length)];
+                                        var randomNum = Math.floor(Math.random() * 1025) + 1;
+                                        var formattedNum = randomNum.toString().padStart(3, '0');
+                                        var newUrl = 'images/Pokemon/' + randomFolder + '/' + formattedNum + '.png';
+
+                                        // Check if the image exists
+                                        var img = new Image();
+                                        img.src = newUrl;
+                                        img.onload = function() {
+                                            isValidImage = true;
+                                            $img.attr('src', newUrl);
+                                        };
+                                        img.onerror = function() {
+                                            isValidImage = false;
+                                            tryLoadImage(); // Try loading another image
+                                        };
+                                    }
+
+                                    tryLoadImage();
                                 });
 
                                 // Add click event listener to set free space image
                                 $('#freeSpaceButton').on('click', function() {
-                                    var freeSpaceNumber = $('#freeSpaceNumber').val();
-                                    if (freeSpaceNumber >= 1 && freeSpaceNumber <= 1025) {
-                                        var formattedNum = freeSpaceNumber.toString().padStart(3, '0');
-                                        var newUrl = 'images/Pokemon/SV/' + formattedNum + '.png';
+                                var freeSpaceNumber = $('#freeSpaceNumber').val();
+                                var freeSpaceGeneration = $('#freeSpaceGeneration').val();
+                                if (freeSpaceNumber >= 1 && freeSpaceNumber <= 1025) {
+                                    var formattedNum = freeSpaceNumber.toString().padStart(3, '0');
+                                    var newUrl = 'images/Pokemon/' + freeSpaceGeneration + '/' + formattedNum + '.png';
+                                    
+                                    // Check if the image exists
+                                    var img = new Image();
+                                    img.src = newUrl;
+                                    img.onload = function() {
                                         $('#freeSpace').attr('src', newUrl);
-                                    } else {
-                                        alert('Please enter a number between 1 and 1025.');
-                                    }
-                                });
+                                    };
+                                    img.onerror = function() {
+                                        alert('Number too high for given era. Please enter a valid number.');
+                                    };
+                                } else {
+                                    alert('Please enter a number between 1 and 1025.');
+                                }
+                            });
 
                                 // Add click event listener to export table as PNG
                                 $('#exportButton').on('click', function() {

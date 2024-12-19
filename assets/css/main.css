@@ -1702,5 +1702,26 @@ input, select, textarea {
 	border: 1px solid black;
 	border-radius: 10px;
 	text-align: center;
-}		
 
+}		
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	padding-left: 2px;
+	padding-right: 2px;
+}
+.button-group button, .button-group, {
+    flex: 1;
+
+}
+.button-group input{
+	flex: 0.5;
+	width: 100%;
+}
+.button-group select {
+    width: auto;
+	min-width: 100px;
+	position: relative;
+    z-index: 1;
+}

@@ -4,18 +4,38 @@
      * Update image URLs to random variations.
      * @return {jQuery} jQuery object.
      */
-		$.fn.updateImageUrls = function() {
-			var $images = $(this).find('img');
-	
-			$images.each(function() {
-				var randomNum = Math.floor(Math.random() * 1025) + 1;
-				var formattedNum = randomNum.toString().padStart(3, '0');
-				var newUrl = 'images/Pokemon/SV/' + formattedNum + '.png';
-				$(this).attr('src', newUrl);
-			});
-	
-			return this;
-		};
+    $.fn.updateImageUrls = function() {
+        var $images = $(this).find('img');
+        var folders = ['SV', 'SS', 'XY', 'BW', 'DPPT', 'HGSS', 'GSC', 'RSE']; // Add more folders as needed
+
+        $images.each(function() {
+            var $img = $(this);
+            var isValidImage = false;
+
+            function tryLoadImage() {
+                var randomFolder = folders[Math.floor(Math.random() * folders.length)];
+                var randomNum = Math.floor(Math.random() * 1025) + 1;
+                var formattedNum = randomNum.toString().padStart(3, '0');
+                var newUrl = 'images/Pokemon/' + randomFolder + '/' + formattedNum + '.png';
+
+                // Check if the image exists
+                var img = new Image();
+                img.src = newUrl;
+                img.onload = function() {
+                    isValidImage = true;
+                    $img.attr('src', newUrl);
+                };
+                img.onerror = function() {
+                    isValidImage = false;
+                    tryLoadImage(); // Try loading another image
+                };
+            }
+
+            tryLoadImage();
+        });
+
+        return this;
+    };
 
 	/**
 	 * Generate an indented list of links from a nav. Meant for use with panel().
