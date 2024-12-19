@@ -1,0 +1,28 @@
+{
+    "configurations": [
+      {
+        "type": "coreclr",
+        "request": "launch",
+        "name": "Launch ShinyPokemonBingoGenerator",
+        "program": "${workspaceFolder}/ShinyPokemonBingoGenerator/bin/Debug/net8.0/ShinyPokemonBingoGenerator.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/ShinyPokemonBingoGenerator",
+        "stopAtEntry": false,
+        "serverReadyAction": {
+          "action": "openExternally",
+          "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+        },
+        "env": {
+          "ASPNETCORE_ENVIRONMENT": "Development"
+        },
+        "preLaunchTask": "build"
+      }
+    ],
+    "inputs": [
+      {
+        "type": "promptString",
+        "id": "programPath",
+        "description": "Path to the DLL to debug"
+      }
+    ]
+  }
