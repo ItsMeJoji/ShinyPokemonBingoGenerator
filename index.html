@@ -108,7 +108,7 @@
                                     $(this).attr('src', newUrl);
                                 });
 
-                                // Add click event listener to export table as JPEG using dom-to-image
+                                // Add click event listener to export table as PNG using dom-to-image
                                 // $('#exportButton').on('click', function() {
                                 //     domtoimage.toPng(document.getElementById('bingoTable'), { quality: 1, style: {padding:"2000px"} })
                                 //         .then(function (dataUrl) {
@@ -126,7 +126,8 @@
                                 $('#exportButton').on('click', function() {
                                     html2canvas(document.querySelector("#bingoTable"), {
                                         logging: true,
-                                        scale: 2
+                                        scale: 2,
+                                        backgroundColor: null
                                     }).then(canvas => {
                                         var link = document.createElement('a');
                                         link.href = canvas.toDataURL();
