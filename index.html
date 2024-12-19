@@ -92,8 +92,6 @@
                         <script src="assets/js/breakpoints.min.js"></script>
                         <script src="assets/js/util.js"></script>
                         <script src="assets/js/main.js"></script>
-                        <!-- Include dom-to-image-more -->
-                        <script src="https://cdn.jsdelivr.net/npm/dom-to-image-more@2.8.0/dist/dom-to-image-more.min.js"></script>
                         <!-- Include html2canvas -->
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
@@ -125,23 +123,9 @@
                                     }
                                 });
 
-                                // Add click event listener to export table as PNG using dom-to-image
-                                // $('#exportButton').on('click', function() {
-                                //     domtoimage.toPng(document.getElementById('bingoTable'), { quality: 1, style: {padding:"2000px"} })
-                                //         .then(function (dataUrl) {
-                                //             var link = document.createElement('a');
-                                //             link.download = 'bingoTable.png';
-                                //             link.href = dataUrl;
-                                //             link.click();
-                                //         })
-                                //         .catch(function (error) {
-                                //             console.error('oops, something went wrong!', error);
-                                //         });
-                                // });
-
                                 // Add click event listener to export table as PNG
                                 $('#exportButton').on('click', function() {
-                                    html2canvas(document.querySelector("#bingoTable"), {
+                                    html2canvas(document.querySelector("#exportArea"), {
                                         logging: true,
                                         scale: 2,
                                         backgroundColor: null
