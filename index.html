@@ -20,6 +20,8 @@
 						</div>
 						<div class="content">
 							<div class="inner">
+                                <div id="exportArea">
+                                    <h2>Shiny Bingo Card</h2>
 								<table id="bingoTable" class="table table-bordered">
 									<thead>
 										<tr>
@@ -48,7 +50,7 @@
                                         <tr>
                                             <td><img src="images/Pokemon/SV/011.png" alt="Image 11" class="img-fluid" /></td>
                                             <td><img src="images/Pokemon/SV/012.png" alt="Image 12" class="img-fluid" /></td>
-                                            <td><img src="images/Pokemon/SV/013.png" alt="Image 13" class="img-fluid" /></td>
+                                            <td><img id="freeSpace" src="images/Pokemon/SV/013.png" alt="Image 13" class="img-fluid" /></td>
                                             <td><img src="images/Pokemon/SV/014.png" alt="Image 14" class="img-fluid" /></td>
                                             <td><img src="images/Pokemon/SV/015.png" class="img-fluid" /></td>
                                         </tr>
@@ -68,11 +70,14 @@
                                         </tr>
 									</tbody>
 								</table>
+                            </div>
 							</div>
 						</div>
                         <nav>
 							<ul>
 								<li><button id="exportButton">Export as PNG</button></li>
+                                <li><button id="freeSpaceButton">Set Free Space:</button><button><input id="freeSpaceNumber" min="1" max="1025" placeholder="Enter #" /></button></li>
+                                <li><button id="modifyButton">TODO...</button></li>
 							</ul>
 						</nav>
                     </div>
@@ -106,6 +111,18 @@
                                     var formattedNum = randomNum.toString().padStart(3, '0');
                                     var newUrl = 'images/Pokemon/SV/' + formattedNum + '.png';
                                     $(this).attr('src', newUrl);
+                                });
+
+                                // Add click event listener to set free space image
+                                $('#freeSpaceButton').on('click', function() {
+                                    var freeSpaceNumber = $('#freeSpaceNumber').val();
+                                    if (freeSpaceNumber >= 1 && freeSpaceNumber <= 1025) {
+                                        var formattedNum = freeSpaceNumber.toString().padStart(3, '0');
+                                        var newUrl = 'images/Pokemon/SV/' + formattedNum + '.png';
+                                        $('#freeSpace').attr('src', newUrl);
+                                    } else {
+                                        alert('Please enter a number between 1 and 1025.');
+                                    }
                                 });
 
                                 // Add click event listener to export table as PNG using dom-to-image
