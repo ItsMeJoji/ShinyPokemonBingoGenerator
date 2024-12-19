@@ -1311,15 +1311,15 @@ input, select, textarea {
 		}
 
 			#header .content .inner {
-				-moz-transition: max-height 2.75s ease, padding 1.75s ease, opacity 0.325s ease-in-out;
-				-webkit-transition: max-height 2.75s ease, padding 1.75s ease, opacity 0.325s ease-in-out;
-				-ms-transition: max-height 2.75s ease, padding 1.75s ease, opacity 0.325s ease-in-out;
-				transition: max-height 2.75s ease, padding 1.75s ease, opacity 0.325s ease-in-out;
-				-moz-transition-delay: 1.25s;
-				-webkit-transition-delay: 0.25s;
-				-ms-transition-delay: 0.25s;
-				transition-delay: 0.25s;
-				padding: 3rem 2rem;
+				-moz-transition: max-height 3.75s ease, padding 1.75s ease, opacity 0.325s ease-in-out;
+				-webkit-transition: max-height 3.75s ease, padding 1.75s ease, opacity 0.325s ease-in-out;
+				-ms-transition: max-height 3.75s ease, padding 1.75s ease, opacity 0.325s ease-in-out;
+				transition: max-height 3.75s ease, padding 1.75s ease, opacity 0.325s ease-in-out;
+				-moz-transition-delay: 5.25s;
+				-webkit-transition-delay: 1.25s;
+				-ms-transition-delay: 1.25s;
+				transition-delay: 1.25s;
+				padding: 0.5rem 0.5rem;
 				max-height: 400rem;
 				overflow: hidden;
 			}
@@ -1670,13 +1670,13 @@ input, select, textarea {
     overflow: auto;
 }
 #bingoTableWrapper {
-	padding: 10px; /* Add padding around the table */
+	padding: 5px; /* Add padding around the table */
 }
 #bingoTable img {
     width: 100%;
-    height: auto;
-    max-width: 80px; /* Adjust as needed */
-    max-height: 80px; /* Adjust as needed */
+    height: 100%;
+    max-width: 100px; /* Adjust as needed */
+    max-height: 100px; /* Adjust as needed */
 }
 #bingoTable th, #bingoTable td {
     border: 1px solid #ffffff; /* Add vertical lines */
@@ -1700,5 +1700,7 @@ input, select, textarea {
 #freeSpaceNumber{
 	background-color: transparent;
 	border: 1px solid black;
-	border-radius: 5px;
+	border-radius: 10px;
+	text-align: center;
 }		
+
