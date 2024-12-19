@@ -10,7 +10,7 @@
 			$images.each(function() {
 				var randomNum = Math.floor(Math.random() * 1025) + 1;
 				var formattedNum = randomNum.toString().padStart(3, '0');
-				var newUrl = 'https://serebii.net/Shiny/SV/new/' + formattedNum + '.png';
+				var newUrl = 'images/Pokemon/SV/' + formattedNum + '.png';
 				$(this).attr('src', newUrl);
 			});
 	

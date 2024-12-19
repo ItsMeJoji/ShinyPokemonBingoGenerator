@@ -1659,3 +1659,39 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+/* Custom */
+#bingoTable {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100vh;
+    min-width: 300px; /* Adjust as needed */
+    min-height: 300px; /* Adjust as needed */
+    overflow: auto;
+}
+
+#bingoTable img {
+    width: 100%;
+    height: auto;
+    max-width: 80px; /* Adjust as needed */
+    max-height: 80px; /* Adjust as needed */
+}
+#bingoTable th, #bingoTable td {
+    border: 1px solid #ffffff; /* Add vertical lines */
+    font-size: 1.5vw; /* Adjust this value as needed */
+    text-align: center; /* Center align the text */
+}
+.logo {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100%; /* Ensure it takes the full height of the header */
+}
+.logo .fas {
+    font-size: 4rem; /* Make the icon larger */
+    animation: spin 0.5s linear; /* Add spinning animation */
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}		
