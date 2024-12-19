@@ -1,76 +1,124 @@
-<div class="text-center">
-    <h1 class="display-4">Shiny Bingo Generator</h1>
-</div>
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Shiny Bingo Card</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+        <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <style>
+            #bingoTable th, #bingoTable td {
+                border: 1px solid #ffffff; /* Add vertical lines */
+                font-size: 1.5vw; /* Adjust this value as needed */
+                text-align: center; /* Center align the text */
+            }
+            .logo {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100%; /* Ensure it takes the full height of the header */
+            }
+            .logo .fas {
+            font-size: 4rem; /* Make the icon larger */
+            animation: spin 0.5s linear; /* Add spinning animation */
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }        
+            </style>
+	</head>
+	<body class="is-preload">
 
-<div class="text-center">
-    <form method="post">
-    <button id="generateButton" class="btn btn-primary" asp-action="Generate">Generate Bingo Card</button>
-    <br>
-    <br>
-    <table id="bingoTable" class="table table-bordered">
-        <thead>
-            <tr>
-                <th>B</th>
-                <th>I</th>
-                <th>N</th>
-                <th>G</th>
-                <th>O</th>
-            </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><img src=@ViewBag.ImgUrl alt="Image 1" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=2" alt="Image 2" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=3" alt="Image 3" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=4" alt="Image 4" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=5" alt="Image 5" class="img-fluid" /></td>
-        </tr>
-        <tr>
-            <td><img src="https://via.placeholder.com/100?text=6" alt="Image 6" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=7" alt="Image 7" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=8" alt="Image 8" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=9" alt="Image 9" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=10" alt="Image 10" class="img-fluid" /></td>
-        </tr>
-        <tr>
-            <td><img src="https://via.placeholder.com/100?text=11" alt="Image 11" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=12" alt="Image 12" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=13" alt="Image 13" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=14" alt="Image 14" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=15" alt="Image 15" class="img-fluid" /></td>
-        </tr>
-        <tr>
-            <td><img src="https://via.placeholder.com/100?text=16" alt="Image 16" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=17" alt="Image 17" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=18" alt="Image 18" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=19" alt="Image 19" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=20" alt="Image 20" class="img-fluid" /></td>
-        </tr>
-        <tr>
-            <td><img src="https://via.placeholder.com/100?text=21" alt="Image 21" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=22" alt="Image 22" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=23" alt="Image 23" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=24" alt="Image 24" class="img-fluid" /></td>
-            <td><img src="https://via.placeholder.com/100?text=25" alt="Image 25" class="img-fluid" /></td>
-        </tr>
-        </tbody>
-    </table>
-    <button id="exportButton" class="btn btn-primary">Export as PNG</button>
-    
-    </form>
-</div>
+		<!-- Wrapper -->
+			<div id="wrapper">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-    <script>
-        document.getElementById('exportButton').addEventListener('click', function () {
-            html2canvas(document.getElementById('bingoTable'), {
-                onrendered: function (canvas) {
-                    var link = document.createElement('a');
-                    link.href = canvas.toDataURL();
-                    link.download = 'bingoTable.png';
-                    link.click();
-                }
-            });
-        });
-    </script>
+				<!-- Header -->
+					<header id="header">
+						<div class="logo">
+							<span class="fas fa-dice-d20"></span>
+						</div>
+						<div class="content">
+							<div class="inner">
+								<table id="bingoTable" class="table table-bordered">
+									<thead>
+										<tr>
+											<th>B</th>
+											<th>I</th>
+											<th>N</th>
+											<th>G</th>
+											<th>O</th>
+										</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td><img src="https://via.placeholder.com/100?text=1" alt="Image 1" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=2" alt="Image 2" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=3" alt="Image 3" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=4" alt="Image 4" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=5" alt="Image 5" class="img-fluid" /></td>
+									</tr>
+									<tr>
+										<td><img src="https://via.placeholder.com/100?text=6" alt="Image 6" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=7" alt="Image 7" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=8" alt="Image 8" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=9" alt="Image 9" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=10" alt="Image 10" class="img-fluid" /></td>
+									</tr>
+									<tr>
+										<td><img src="https://via.placeholder.com/100?text=11" alt="Image 11" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=12" alt="Image 12" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=13" alt="Image 13" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=14" alt="Image 14" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=15" alt="Image 15" class="img-fluid" /></td>
+									</tr>
+									<tr>
+										<td><img src="https://via.placeholder.com/100?text=16" alt="Image 16" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=17" alt="Image 17" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=18" alt="Image 18" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=19" alt="Image 19" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=20" alt="Image 20" class="img-fluid" /></td>
+									</tr>
+									<tr>
+										<td><img src="https://via.placeholder.com/100?text=21" alt="Image 21" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=22" alt="Image 22" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=23" alt="Image 23" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=24" alt="Image 24" class="img-fluid" /></td>
+										<td><img src="https://via.placeholder.com/100?text=25" alt="Image 25" class="img-fluid" /></td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+                    </div>
+                    <!-- BG -->
+                        <div id="bg"></div>
+            
+                    <!-- Scripts -->
+                     
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script src="assets/js/jquery.min.js"></script>
+                        <script src="assets/js/browser.min.js"></script>
+                        <script src="assets/js/breakpoints.min.js"></script>
+                        <script src="assets/js/util.js"></script>
+                        <script src="assets/js/main.js"></script>
+                        <script>
+                            $(document).ready(function() {
+                                $('#bingoTable').updateImageUrls();
+                                setTimeout(function() {
+                                $('.logo .fas').removeClass('spin');
+                            }, 500); // Remove the spin class after 0.5 seconds
 
+                                        // Add click event listener to update image URL on click
+                            $('#bingoTable img').on('click', function() {
+                                var randomNum = Math.floor(Math.random() * 1025) + 1;
+                                var formattedNum = randomNum.toString().padStart(3, '0');
+                                var newUrl = 'https://serebii.net/Shiny/SV/new/' + formattedNum + '.png';
+                                $(this).attr('src', newUrl);
+                            });
+                            });
+                        </script>
+                </body>
+            </html>
+            

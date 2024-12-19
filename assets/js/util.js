@@ -1,6 +1,23 @@
 (function($) {
 
 	/**
+     * Update image URLs to random variations.
+     * @return {jQuery} jQuery object.
+     */
+		$.fn.updateImageUrls = function() {
+			var $images = $(this).find('img');
+	
+			$images.each(function() {
+				var randomNum = Math.floor(Math.random() * 1025) + 1;
+				var formattedNum = randomNum.toString().padStart(3, '0');
+				var newUrl = 'https://serebii.net/Shiny/SV/new/' + formattedNum + '.png';
+				$(this).attr('src', newUrl);
+			});
+	
+			return this;
+		};
+
+	/**
 	 * Generate an indented list of links from a nav. Meant for use with panel().
 	 * @return {jQuery} jQuery object.
 	 */
