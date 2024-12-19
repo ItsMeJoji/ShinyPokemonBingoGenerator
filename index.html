@@ -64,7 +64,7 @@
                                             <td><img src="images/Pokemon/SV/022.png" alt="Image 22" class="img-fluid" /></td>
                                             <td><img src="images/Pokemon/SV/023.png" alt="Image 23" class="img-fluid" /></td>
                                             <td><img src="images/Pokemon/SV/024.png" alt="Image 24" class="img-fluid" /></td>
-                                            <td><img src="images/Pokemon/SV/025.png" class="img-fluid" /></td>
+                                            <td><img src="images/Pokemon/SV/025.png" alt="Image 25" class="img-fluid" /></td>
                                         </tr>
 									</tbody>
 								</table>
@@ -87,10 +87,6 @@
                         <script src="assets/js/breakpoints.min.js"></script>
                         <script src="assets/js/util.js"></script>
                         <script src="assets/js/main.js"></script>
-                        <!-- Include html2canvas -->
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-                        <!-- Include dom-to-image -->
-                        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script> -->
                         <!-- Include dom-to-image-more -->
                         <script src="https://cdn.jsdelivr.net/npm/dom-to-image-more@2.8.0/dist/dom-to-image-more.min.js"></script>
 
@@ -109,24 +105,9 @@
                                     $(this).attr('src', newUrl);
                                 });
 
-                                //Add click event listener to export table as PNG usinbg html2canvas
-                                // $('#exportButton').on('click', function() {
-                                //     setTimeout(function() {
-                                //         html2canvas(document.querySelector("#bingoTable"), {
-                                //             logging: true,
-                                //             scale: 2
-                                //         }).then(canvas => {
-                                //             var link = document.createElement('a');
-                                //             link.href = canvas.toDataURL();
-                                //             link.download = 'bingoTable.png';
-                                //             link.click();
-                                //         });
-                                //     }, 1000); // Add a delay to ensure the table is fully rendered
-                                // });
-
                                 // Add click event listener to export table as JPEG using dom-to-image
                                 $('#exportButton').on('click', function() {
-                                    domtoimage.toPng(document.getElementById('bingoTable'), { quality: 0.95 })
+                                    domtoimage.toPng(document.getElementById('bingoTable'), { quality: 0.95, scale: 2, style: {padding:"10px"} })
                                         .then(function (dataUrl) {
                                             var link = document.createElement('a');
                                             link.download = 'bingoTable.png';
