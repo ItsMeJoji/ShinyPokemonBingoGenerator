@@ -5,8 +5,18 @@
      * @return {jQuery} jQuery object.
      */
     $.fn.updateImageUrls = function() {
-        var $images = $(this).find('img');
+        var $images = $(this).find('img.pokemon');
         var folders = ['SV', 'SS', 'XY', 'BW', 'DPPT', 'HGSS', 'GSC', 'RSE']; // Add more folders as needed
+		var icons = {
+			'SV': 'images/Icons/SV.png',
+			'SS': 'images/Icons/SS.png',
+			'XY': 'images/Icons/XY.png',
+			'BW': 'images/Icons/BW.png',
+			'DPPT': 'images/Icons/DPPT.png',
+			'HGSS': 'images/Icons/HGSS.png',
+			'GSC': 'images/Icons/GSC.png',
+			'RSE': 'images/Icons/RSE.png'
+		};
 
         $images.each(function() {
             var $img = $(this);
@@ -17,25 +27,40 @@
                 var randomNum = Math.floor(Math.random() * 1025) + 1;
                 var formattedNum = randomNum.toString().padStart(3, '0');
                 var newUrl = 'images/Pokemon/' + randomFolder + '/' + formattedNum + '.png';
+				var iconUrl = icons[randomFolder];
 
                 // Check if the image exists
                 var img = new Image();
                 img.src = newUrl;
                 img.onload = function() {
                     isValidImage = true;
-                    $img.attr('src', newUrl);
+					$img.attr('src', newUrl);
+					$img.siblings('.icon').attr('src', iconUrl);
                 };
                 img.onerror = function() {
                     isValidImage = false;
-                    tryLoadImage(); // Try loading another image
+					try {
+						tryLoadImage(); // Try loading another image
+					} catch (e) {
+						console.warn('Failed to load image:', newUrl);
+					}
                 };
             }
 
-            tryLoadImage();
+			try {
+				tryLoadImage();
+			} catch (e) {
+				console.warn('Failed to load image:', e);
+			}
         });
 
         return this;
     };
+
+	// Global error handler for images
+	$(document).on('error', 'img', function() {
+		console.warn('Image failed to load:', $(this).attr('src'));
+	});
 
 	/**
 	 * Generate an indented list of links from a nav. Meant for use with panel().

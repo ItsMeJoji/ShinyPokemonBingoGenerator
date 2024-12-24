@@ -1659,6 +1659,8 @@ input, select, textarea {
 		body.is-preload #footer {
 			opacity: 0;
 		}
+
+
 /* Custom */
 #bingoTable {
     width: 100%;
@@ -1672,7 +1674,7 @@ input, select, textarea {
 #bingoTableWrapper {
 	padding: 5px; /* Add padding around the table */
 }
-#bingoTable img {
+#bingoTable img.pokemon {
     width: 100%;
     height: 100%;
     max-width: 100px; /* Adjust as needed */
@@ -1724,4 +1726,30 @@ input, select, textarea {
 	min-width: 100px;
 	position: relative;
     z-index: 1;
+}
+/* Container for the Pokémon image and icon */
+.image-container {
+	position: relative;
+	width: 100px; /* Adjust the size as needed */
+	height: 100px; /* Adjust the size as needed */
+}
+
+/* Pokémon image */
+.image-container img.pokemon {
+	display: block;
+	width: 100%; /* Ensure the image takes up the full width of the container */
+	height: 100%; /* Maintain the aspect ratio */
+	position: relative; /* Ensure it is above the icon */
+	z-index: 2; /* Ensure it is above the icon */
+}
+
+/* Icon positioned in the top right corner */
+.image-container img.icon {
+	position: absolute;
+	top: -20px;
+	right: -20px;
+	width: 45px; /* Adjust the size as needed */
+	height: 45px; /* Adjust the size as needed */
+	z-index: 1; /* Ensure the icon is below the Pokémon image */
+	pointer-events: none; /* Make the icon unclickable */
 }
