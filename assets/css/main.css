@@ -1322,7 +1322,7 @@ input, select, textarea {
 				padding: 0.5rem 0.5rem;
 				max-height: 400rem;
 				margin: 0,auto;
-				overflow: auto;
+				overflow: hidden;
 			}
 
 				#header .content .inner > :last-child {
