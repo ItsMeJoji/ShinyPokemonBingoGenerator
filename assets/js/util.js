@@ -1,26 +1,12 @@
 (function($) {
 
+
 	/**
      * Update image URLs to random variations.
      * @return {jQuery} jQuery object.
      */
     $.fn.updateImageUrls = function() {
         var $images = $(this).find('img.pokemon');
-        var folders = ['SV', 'SS', 'XY', 'BW', 'DPPT', 'HGSS', 'GSC', 'RSE']; // Add more folders as needed
-		var icons = {
-			'SV': 'images/Icons/SV.png',
-			'PLA': 'images/Icons/PLA.png',
-			'SS': 'images/Icons/SS.png',
-			'BDSP': 'images/Icons/BDSP.png',
-			'LGPE': 'images/Icons/LGPE.png',
-			'XY': 'images/Icons/XY.png',
-			'BW': 'images/Icons/BW.png',
-			'DPPT': 'images/Icons/DPPT_HGSS.png',
-			'HGSS': 'images/Icons/DPPT_HGSS.png',
-			'GSC': 'images/Icons/GSC.png',
-			'FRLG': 'images/Icons/FRLG.png',
-			'RSE': 'images/Icons/RSE.png'
-		};
 
         $images.each(function() {
             var $img = $(this);
@@ -39,12 +25,14 @@
 					else if (randomSubFolder < 0.50 && randomNum <= 493) {
 						randomFolder = 'BDSP';
 					}
-					else if (randomSubFolder < 0.75 && ([722,723,724,155,156,157,501,502,503,399,400,396,397,398,403,404,405,265,266,267,268,269,77,78,133,134,135,136,196,197,470,471,700,41,42,169,425,426,401,402,418,419,412,413,414,74,75,76,234,899,446,143,46,47,172,25,26,63,64,65,390,391,392,427,428,420,421,54,55,415,416,123,900,212,214,439,122,190,424,129,130,422,423,211,904,440,113,242,406,315,407,455,548,549,114,465,339,340,453,454,280,281,282,475,193,469,449,450,417,434,435,216,217,901,704,705,706,95,208,111,112,464,438,185,108,463,175,176,468,387,388,389,137,233,474,92,93,94,442,198,430,201,363,364,365,223,224,451,452,58,59,431,432,66,67,68,441,355,356,477,393,394,395,458,226,550,902,37,37,38,38,72,73,456,457,240,126,467,81,82,462,436,437,239,125,466,207,472,443,443,445,299,476,100,101,479,433,358,200,429,173,35,36,215,215,903,461,361,362,478,408,409,410,411,220,221,473,712,713,459,460,570,571,627,628,447,448,480,481,482,485,486,488,641,642,646,905,483,483,484,484,487,489,490,493,492,491].includes(randomNum)) ) {
+					else if (randomSubFolder < 0.75 && (pokemonPLA.includes(randomNum)) ) {
 						randomFolder = 'PLA';
 					}
-					else {randomFolder = 'LGPE';}
+					else if(randomSubFolder < 1 && randomNum <= 150){
+						randomFolder = 'LGPE';
+					}
 				}
-				else if (randomFolder == 'RSE') {
+				if (randomFolder == 'RSE' && randomNum <= 386) {
 					var randomSubFolder = Math.random();
 					if (randomSubFolder < 0.5) {
 						randomFolder = 'RSE';
@@ -79,6 +67,173 @@
 
         return this;
     };
+
+	/**
+	 * Scipts taken from index.html
+	 */
+	$(document).ready(function() {
+		$('#bingoTable').updateImageUrls();
+		setTimeout(function() {
+		$('.logo .fas').removeClass('spin');
+		}, 500); // Remove the spin class after 0.5 seconds
+
+		// Add click event listener to update image URL on click
+		$('#bingoTable img').on('click', function() {
+			var $img = $(this);
+			var isValidImage = false;
+
+			function tryLoadImage() {
+				var randomFolder = folders[Math.floor(Math.random() * folders.length)];
+				var randomNum = Math.floor(Math.random() * 1025) + 1;
+				var formattedNum = randomNum.toString().padStart(3, '0');
+				var newUrl = 'images/Pokemon/' + randomFolder + '/' + formattedNum + '.png';
+				if (randomFolder == 'SS') {
+					var randomSubFolder = Math.random();
+					if (randomSubFolder < 0.25) {
+						randomFolder = 'SS';
+					}
+					else if (randomSubFolder < 0.50 && randomNum <= 493) {
+						randomFolder = 'BDSP';
+					}
+					else if (randomSubFolder < 0.75 && (pokemonPLA.includes(randomNum)) ) {
+						randomFolder = 'PLA';
+					}
+					else if(randomSubFolder < 1 && randomNum <= 150){
+						randomFolder = 'LGPE';
+					}
+				}
+				if (randomFolder == 'RSE' && randomNum <= 386) {
+					var randomSubFolder = Math.random();
+					if (randomSubFolder < 0.5) {
+						randomFolder = 'RSE';
+					}else{randomFolder = 'FRLG';}
+				}
+				var iconUrl = icons[randomFolder];
+
+				// Check if the image exists
+				var img = new Image();
+				img.src = newUrl;
+				img.onload = function() {
+					isValidImage = true;
+					$img.attr('src', newUrl);
+					$img.siblings('.icon').attr('src', iconUrl);
+				};
+				img.onerror = function() {
+					isValidImage = false;
+					try {
+						tryLoadImage();
+					} catch (e) {
+						console.warn('Failed to load image:', e);
+					}
+				};
+			}
+
+			try {
+				tryLoadImage();
+			} catch (e) {
+				console.warn('Failed to load image:', e);
+			}
+		});
+
+		// Add click event listener to set free space
+		$('#freeSpaceButton').on('click', function() {
+			var freeSpaceNumber = $('#freeSpaceNumber').val();
+			var freeSpaceGeneration = $('#freeSpaceGeneration').val();
+			var freeSpaceGenerationIcon = freeSpaceGeneration;
+			if (['PLA','BDSP','LGPE'].includes(freeSpaceGeneration)) {
+				freeSpaceGeneration = 'SS';
+			}
+			else if (['FRLG'].includes(freeSpaceGeneration)) {
+				freeSpaceGeneration = 'RSE';
+			}
+			if(['DPPT','HGSS'].includes(freeSpaceGenerationIcon)) {
+				freeSpaceGenerationIcon = 'DPPT_HGSS';
+			}
+			if (freeSpaceNumber >= 1 && freeSpaceNumber <= 1025) {
+				var formattedNum = freeSpaceNumber.toString().padStart(3, '0');
+				var newUrl = 'images/Pokemon/' + freeSpaceGeneration + '/' + formattedNum + '.png';
+				var iconUrl = 'images/Icons/' + freeSpaceGenerationIcon + '.png';
+				
+				// Check if the image exists
+				var img = new Image();
+				img.src = newUrl;
+				img.onload = function() {
+					$('#freeSpace').attr('src', newUrl);
+					$('#freeSpaceGen').attr('src', iconUrl);
+				};
+				img.onerror = function() {
+					alert('Number too high for given era. Please enter a valid number.');
+				};
+			} else {
+				alert('Please enter a number between 1 and 1025.');
+			}
+		});
+
+		// Add click event listener to set custom spaces
+		$('#customSpaceButton').on('click', function() {
+			var customSpaceLocation = $('#customSpaceLocation').val();
+			var customSpaceNumber = $('#customSpaceNumber').val();
+			var customSpaceGeneration = $('#customSpaceGeneration').val();
+			var customSpaceGenerationIcon = customSpaceGeneration;
+			
+			if (customSpaceLocation < 1 || customSpaceLocation > 25) {
+				alert('Please enter a location number between 1 and 25.');
+				return;
+			}
+
+			if (['PLA','BDSP','LGPE'].includes(customSpaceGeneration)) {
+				customSpaceGeneration = 'SS';
+			}
+			else if (['FRLG'].includes(customSpaceGeneration)) {
+				customSpaceGeneration = 'RSE';
+			}
+
+			if(['DPPT','HGSS'].includes(customSpaceGenerationIcon)) {
+				customSpaceGenerationIcon = 'DPPT_HGSS';
+			}
+			if (customSpaceNumber >= 1 && customSpaceNumber <= 1025) {
+				var formattedNum = customSpaceNumber.toString().padStart(3, '0');
+				var newUrl = 'images/Pokemon/' + customSpaceGeneration + '/' + formattedNum + '.png';
+				var iconUrl = 'images/Icons/' + customSpaceGenerationIcon + '.png';
+				
+				//Format the location to add leading zero
+				var formattedLocation = customSpaceLocation.toString().padStart(2, '0');
+				var pokemonId = '#p' + formattedLocation;
+				var iconId = '#i' + formattedLocation;
+
+
+				// Check if the image exists
+				var img = new Image();
+				img.src = newUrl;
+				img.onload = function() {
+					$(pokemonId).attr('src', newUrl);
+					$(iconId).attr('src', iconUrl);
+				};
+				img.onerror = function() {
+					alert('Number too high for given era. Please enter a valid number.');
+				};
+			} else {
+				alert('Please enter a number between 1 and 1025.');
+			}
+		});
+
+		// Add click event listener to export table as PNG
+		$('#exportButton').on('click', function() {
+			html2canvas(document.querySelector("#exportArea"), {
+				logging: true,
+				scale: 2,
+				backgroundColor: null
+			}).then(canvas => {
+				var link = document.createElement('a');
+				link.href = canvas.toDataURL();
+				link.download = 'bingoTable.png';
+				link.click();
+			}).catch(function (error) {
+				console.error('Error capturing the table:', error);
+			});
+		});
+	});
+
 
 	// Global error handler for images
 	$(document).on('error', 'img', function() {

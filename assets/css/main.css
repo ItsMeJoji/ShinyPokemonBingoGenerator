@@ -1708,6 +1708,20 @@ input, select, textarea {
 	text-align: center;
 
 }		
+#customSpaceNumber{
+	background-color: transparent;
+	border: 1px solid black;
+	border-radius: 10px;
+	text-align: center;
+
+}
+#customSpaceLocation{
+	background-color: transparent;
+	border: 1px solid black;
+	border-radius: 10px;
+	text-align: center;
+
+}
 .button-group {
     display: flex;
     justify-content: space-between;

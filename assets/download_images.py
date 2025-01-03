@@ -5,11 +5,11 @@ def download_images(max_number=1025, output_folder='images'):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    base_url = "https://serebii.net/Shiny/SV/new/"
+    base_url = "https://archives.bulbagarden.net/wiki/Category:Crystal_Shiny_sprites#/media/File:Spr_2c_"
     failed_downloads = []
 
     for i in range(1, max_number + 1):
-        image_url = f"{base_url}{str(i).zfill(3)}.png"
+        image_url = f"{base_url}{str(i).zfill(3)}_s.png"
         response = requests.get(image_url)
         if response.status_code == 200:
             with open(os.path.join(output_folder, f"{str(i).zfill(3)}.png"), 'wb') as file:
