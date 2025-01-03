@@ -1664,17 +1664,16 @@ input, select, textarea {
 
 /* Custom */
 #bingoTable {
-    width: 100%;
-    height: auto;
-    min-width: 100px; 
-    min-height: 100px; 
-	align-content: center;
     overflow: auto;
 }
 #bingoTable th, #bingoTable td {
 	border: 1px solid #ffffff; 
     font-size: 1.5vw; 
     text-align: center; 
+}
+#bingoTable th {
+	width: 100px; 
+	height: 100px;
 }
 .logo {
 	display: flex;
@@ -1727,49 +1726,66 @@ input, select, textarea {
 	padding-right: 2px;
 	grid-template-columns: 1fr 1fr 1fr;
 }
-@media(max-width: 600px) {
-	#bingoTable {
-		width: 10%;
-		margin: 0, auto;
-	}
-	.image-container, .image-container img {
-		width: 10%; 
-		height: 10%; 
-	}
-	.inner {
-		padding: 0;
-		/* width: 80%;
-		height: auto; */
-	}
-	.button-group-bottom {
-		grid-template-columns: 1fr;
-	}
-}
 
+/* TODO Alter .image-contaner and img.pokemon to fix for mobile*/
 .image-container {
 	position: relative;
 	width: 100px; 
 	height: 100px; 
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .image-container img.pokemon {
-	display: block;
+	position: relative; 
 	width: 100%; 
 	height: 100%; 
-	max-width: 100px;
-	max-height: 100px;
-	position: relative; 
+	object-fit: contain;
 	z-index: 2; 
 }
 
 .image-container img.icon {
 	position: absolute;
-	top: -10%;
-	right: -10%;
-	width: 40%; 
-	height: 40%; 
+	top: -10px;
+	right: -10px;
+	width: 40px;
+	height: 40px;
 	z-index: 1; 
 	pointer-events: none; 
+}
+@media(max-width: 600px) {
+	#bingoTable {
+		width: 10%;
+		margin: 0, auto;
+	}
+	.image-container{
+		position: relative;
+		max-width: 60px;
+		max-height: 60px;
+	}
+	.image-container img.pokemon {
+		position: relative; 
+		width: 90%; 
+		height: 90%; 
+		object-fit: contain;
+		z-index: 2; 
+	}
+	.image-container img.icon {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		top: 0;
+		right: 0;
+		z-index: 1; 
+		pointer-events: none; 
+	}
+	.inner {
+		padding: 0;
+	}
+	.button-group-bottom {
+		grid-template-columns: 1fr;
+	}
 }
 #footer {
 	position: relative;
