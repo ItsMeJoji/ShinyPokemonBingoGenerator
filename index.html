@@ -18,7 +18,7 @@
 						<div class="logo">
 							<span class="fas fa-dice-d20"></span>
 						    </div>
-                            <div class="button-group">
+                            <div class="button-group-top">
                                 <button>Free Space: </button>
                                 <button>
                                     <input id="freeSpaceNumber" min="1" max="1025" placeholder="Enter #" />
@@ -38,13 +38,12 @@
                                         <option value="GSC">GSC</option>
                                     </select>
                                 <button id="freeSpaceButton">Set</button>
-                                <button><a href="#intro">How to Use...</a></button>
                             </div>
                         <div class="content">
 							<div class="inner">
                                 <div id="exportArea">
                                     <h2>Shiny Bingo Card</h2>
-								<table id="bingoTable" class="table table-bordered">
+								<table id="bingoTable">
 									<thead>
 										<tr>
 											<th style="text-align: center; padding-top: 30px;"><H1>B</H1></th>
@@ -220,8 +219,9 @@
                             </div>
 							</div>
 						</div>
-                        <div class="button-group">
+                        <div class="button-group-bottom">
                             <button id="exportButton">Export as PNG</button>
+                            <button><a href="#intro">How to Use...</a></button>
                             <button onclick="window.location.href='custom-card.html'">Make a Custom Bingo Card</button>
                         </div>
 
