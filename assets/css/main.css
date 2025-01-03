@@ -1756,7 +1756,6 @@ input, select, textarea {
 }
 @media(max-width: 600px) {
 	#bingoTable {
-		width: 10%;
 		margin: 0, auto;
 	}
 	.image-container{
