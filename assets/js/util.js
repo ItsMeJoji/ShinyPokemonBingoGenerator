@@ -162,7 +162,7 @@
 					$('#freeSpaceGen').attr('src', iconUrl);
 				};
 				img.onerror = function() {
-					alert('Number too high for given era. Please enter a valid number.');
+					alert('Pokemon is not Obtainable in Selected Generation. Please enter a valid Pokedex Number.');
 				};
 			} else {
 				alert('Please enter a number between 1 and 1025.');
@@ -210,7 +210,7 @@
 					$(iconId).attr('src', iconUrl);
 				};
 				img.onerror = function() {
-					alert('Number too high for given era. Please enter a valid number.');
+					alert('Pokemon is not Obtainable in Selected Generation. Please enter a valid Pokedex Number.');
 				};
 			} else {
 				alert('Please enter a number between 1 and 1025.');
