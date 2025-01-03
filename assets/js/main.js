@@ -1,7 +1,7 @@
-const version = '0.7.3';
+const version = '0.7.4';
 
 $(document).ready(function() {
-    $('#footer h6').html(`Version ${version} - Created by <a href="https://www.itsmejoji.com" target="_blank">ItsMeJoji</a><br/>Images are from the official Pokémon games and are used for non-commercial purposes.`);
+    $('#footer h6').html(`Version ${version} - Created by <a href="https://itsmejoji.com" target="_blank">ItsMeJoji</a><br/>Images are from the official Pokémon games and are used for non-commercial purposes.`);
 });
 
 (function($) {
