@@ -222,7 +222,7 @@
 
 			$('#exportArea').css({
 				'position': 'relative',
-				'background-image': 'url("/ShinyPokemonBingoGenerator/images/bg.jpg")',
+				'background-image': 'linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)),url("/ShinyPokemonBingoGenerator/images/bg.jpg")',
 				'background-size': 'cover',
 				'background-position': 'center',
 				'background-repeat': 'no-repeat'
