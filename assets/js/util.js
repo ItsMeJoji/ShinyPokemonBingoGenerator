@@ -219,6 +219,15 @@
 
 		// Add click event listener to export table as PNG
 		$('#exportButton').on('click', function() {
+
+			$('#exportArea').css({
+				'position': 'relative',
+				'background-image': 'linear-gradient(to top, rgba(19, 21, 25, 0.5), rgba(19, 21, 25, 0.5)),url("../../images/bg.jpg")',
+				'background-size': 'cover',
+				'background-position': 'center',
+				'background-repeat': 'no-repeat'
+			});
+
 			html2canvas(document.querySelector("#exportArea"), {
 				logging: true,
 				scale: 2,
@@ -228,8 +237,21 @@
 				link.href = canvas.toDataURL();
 				link.download = 'bingoTable.png';
 				link.click();
+
+				$('#exportArea').css({
+                    'background-image': '',
+                    'background-size': '',
+                    'background-position': '',
+                    'background-repeat': ''
+                });
 			}).catch(function (error) {
 				console.error('Error capturing the table:', error);
+				$('#exportArea').css({
+                    'background-image': '',
+                    'background-size': '',
+                    'background-position': '',
+                    'background-repeat': ''
+                });
 			});
 		});
 	});
