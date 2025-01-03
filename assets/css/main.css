@@ -1746,10 +1746,10 @@ input, select, textarea {
 /* Icon positioned in the top right corner */
 .image-container img.icon {
 	position: absolute;
-	top: -20px;
-	right: -20px;
-	width: 45px; /* Adjust the size as needed */
-	height: 45px; /* Adjust the size as needed */
+	top: -10%;
+	right: -10%;
+	width: 40%; /* Adjust the size as needed */
+	height: 40%; /* Adjust the size as needed */
 	z-index: 1; /* Ensure the icon is below the Pokémon image */
 	pointer-events: none; /* Make the icon unclickable */
 }

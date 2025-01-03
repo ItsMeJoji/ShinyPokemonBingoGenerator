@@ -9,12 +9,16 @@
         var folders = ['SV', 'SS', 'XY', 'BW', 'DPPT', 'HGSS', 'GSC', 'RSE']; // Add more folders as needed
 		var icons = {
 			'SV': 'images/Icons/SV.png',
+			'PLA': 'images/Icons/PLA.png',
 			'SS': 'images/Icons/SS.png',
+			'BDSP': 'images/Icons/BDSP.png',
+			'LGPE': 'images/Icons/LGPE.png',
 			'XY': 'images/Icons/XY.png',
 			'BW': 'images/Icons/BW.png',
-			'DPPT': 'images/Icons/DPPT.png',
-			'HGSS': 'images/Icons/HGSS.png',
+			'DPPT': 'images/Icons/DPPT_HGSS.png',
+			'HGSS': 'images/Icons/DPPT_HGSS.png',
 			'GSC': 'images/Icons/GSC.png',
+			'FRLG': 'images/Icons/FRLG.png',
 			'RSE': 'images/Icons/RSE.png'
 		};
 
@@ -27,6 +31,25 @@
                 var randomNum = Math.floor(Math.random() * 1025) + 1;
                 var formattedNum = randomNum.toString().padStart(3, '0');
                 var newUrl = 'images/Pokemon/' + randomFolder + '/' + formattedNum + '.png';
+				if (randomFolder == 'SS') {
+					var randomSubFolder = Math.random();
+					if (randomSubFolder < 0.25) {
+						randomFolder = 'SS';
+					}
+					else if (randomSubFolder < 0.50 && randomNum <= 493) {
+						randomFolder = 'BDSP';
+					}
+					else if (randomSubFolder < 0.75 && ([722,723,724,155,156,157,501,502,503,399,400,396,397,398,403,404,405,265,266,267,268,269,77,78,133,134,135,136,196,197,470,471,700,41,42,169,425,426,401,402,418,419,412,413,414,74,75,76,234,899,446,143,46,47,172,25,26,63,64,65,390,391,392,427,428,420,421,54,55,415,416,123,900,212,214,439,122,190,424,129,130,422,423,211,904,440,113,242,406,315,407,455,548,549,114,465,339,340,453,454,280,281,282,475,193,469,449,450,417,434,435,216,217,901,704,705,706,95,208,111,112,464,438,185,108,463,175,176,468,387,388,389,137,233,474,92,93,94,442,198,430,201,363,364,365,223,224,451,452,58,59,431,432,66,67,68,441,355,356,477,393,394,395,458,226,550,902,37,37,38,38,72,73,456,457,240,126,467,81,82,462,436,437,239,125,466,207,472,443,443,445,299,476,100,101,479,433,358,200,429,173,35,36,215,215,903,461,361,362,478,408,409,410,411,220,221,473,712,713,459,460,570,571,627,628,447,448,480,481,482,485,486,488,641,642,646,905,483,483,484,484,487,489,490,493,492,491].includes(randomNum)) ) {
+						randomFolder = 'PLA';
+					}
+					else {randomFolder = 'LGPE';}
+				}
+				else if (randomFolder == 'RSE') {
+					var randomSubFolder = Math.random();
+					if (randomSubFolder < 0.5) {
+						randomFolder = 'RSE';
+					}else{randomFolder = 'FRLG';}
+				}
 				var iconUrl = icons[randomFolder];
 
                 // Check if the image exists
