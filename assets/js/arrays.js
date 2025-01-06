@@ -2,7 +2,7 @@
 // Arrays for Site
 
 // Array of all the sprites
-const folders = ['SV', 'SS', 'XY', 'BW', 'DPPT', 'HGSS', 'GSC', 'RSE', 'C', 'XD'];
+const folders = ['SV', 'SS', 'SM', 'XY', 'BW', 'DPPT', 'HGSS', 'GSC', 'RSE', 'C', 'XD'];
 
 // Array of all the icons
 const icons = {
@@ -10,6 +10,7 @@ const icons = {
     'SS': 'images/Icons/SS.png',
     'BDSP': 'images/Icons/BDSP.png',
     'LGPE': 'images/Icons/LGPE.png',
+    'SM': 'images/Icons/SM.png',
     'XY': 'images/Icons/XY.png',
     'BW': 'images/Icons/BW.png',
     'DPPT': 'images/Icons/DPPT_HGSS.png',
