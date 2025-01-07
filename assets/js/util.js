@@ -32,6 +32,18 @@
 						randomFolder = 'LGPE';
 					}
 				}
+				if (randomFolder == 'SM') {
+					var randomSubFolder = Math.random();
+					if (randomSubFolder < 0.5) {
+						randomFolder = 'SM';
+					}else{randomFolder = 'USUM';}
+				}
+				if (randomFolder == 'XY') {
+					var randomSubFolder = Math.random();
+					if (randomSubFolder < 0.5) {
+						randomFolder = 'XY';
+					}else{randomFolder = 'ORAS';}
+				}
 				if (randomFolder == 'RSE' && randomNum <= 386) {
 					var randomSubFolder = Math.random();
 					if (randomSubFolder < 0.5) {
@@ -102,6 +114,18 @@
 						randomFolder = 'LGPE';
 					}
 				}
+				if (randomFolder == 'SM') {
+					var randomSubFolder = Math.random();
+					if (randomSubFolder < 0.5) {
+						randomFolder = 'SM';
+					}else{randomFolder = 'USUM';}
+				}
+				if (randomFolder == 'XY') {
+					var randomSubFolder = Math.random();
+					if (randomSubFolder < 0.5) {
+						randomFolder = 'XY';
+					}else{randomFolder = 'ORAS';}
+				}
 				if (randomFolder == 'RSE' && randomNum <= 386) {
 					var randomSubFolder = Math.random();
 					if (randomSubFolder < 0.5) {
@@ -142,6 +166,12 @@
 			var freeSpaceGenerationIcon = freeSpaceGeneration;
 			if (['PLA','BDSP','LGPE'].includes(freeSpaceGeneration)) {
 				freeSpaceGeneration = 'SS';
+			}
+			if (['USUM','SM'].includes(freeSpaceGeneration)) {
+				freeSpaceGeneration = 'SM';
+			}
+			if (['ORAS','XY'].includes(freeSpaceGeneration)) {
+				freeSpaceGeneration = 'XY';
 			}
 			else if (['FRLG'].includes(freeSpaceGeneration)) {
 				freeSpaceGeneration = 'RSE';
@@ -184,10 +214,15 @@
 			if (['PLA','BDSP','LGPE'].includes(customSpaceGeneration)) {
 				customSpaceGeneration = 'SS';
 			}
-			else if (['FRLG'].includes(customSpaceGeneration)) {
+			if (['USUM','SM'].includes(customSpaceGeneration)) {
+				customSpaceGeneration = 'SM';
+			}
+			if (['ORAS','XY'].includes(customSpaceGeneration)) {
+				customSpaceGeneration = 'XY';
+			}
+			if (['FRLG'].includes(customSpaceGeneration)) {
 				customSpaceGeneration = 'RSE';
 			}
-
 			if(['DPPT','HGSS'].includes(customSpaceGenerationIcon)) {
 				customSpaceGenerationIcon = 'DPPT_HGSS';
 			}
