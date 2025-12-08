@@ -19,15 +19,18 @@
                 var newUrl = 'images/Pokemon/' + randomFolder + '/' + formattedNum + '.png';
 				if (randomFolder == 'SS') {
 					var randomSubFolder = Math.random();
-					if (randomSubFolder < 0.25) {
+					if (randomSubFolder < 0.20) {
 						randomFolder = 'SS';
 					}
-					else if (randomSubFolder < 0.50 && randomNum <= 493) {
+					else if (randomSubFolder < 0.40 && randomNum <= 493) {
 						randomFolder = 'BDSP';
 					}
-					else if (randomSubFolder < 0.75 && (pokemonPLA.includes(randomNum)) ) {
+					else if (randomSubFolder < 0.60 && (pokemonPLA.includes(randomNum)) ) {
 						randomFolder = 'PLA';
 					}
+					else if (randomSubFolder < 0.80 && (pokemonPLZA.includes(randomNum)) ) {
+						randomFolder = 'PLZA';
+					}					
 					else if(randomSubFolder < 1 && randomNum <= 150){
 						randomFolder = 'LGPE';
 					}
@@ -101,15 +104,18 @@
 				var newUrl = 'images/Pokemon/' + randomFolder + '/' + formattedNum + '.png';
 				if (randomFolder == 'SS') {
 					var randomSubFolder = Math.random();
-					if (randomSubFolder < 0.25) {
+					if (randomSubFolder < 0.20) {
 						randomFolder = 'SS';
 					}
-					else if (randomSubFolder < 0.50 && randomNum <= 493) {
+					else if (randomSubFolder < 0.40 && randomNum <= 493) {
 						randomFolder = 'BDSP';
 					}
-					else if (randomSubFolder < 0.75 && (pokemonPLA.includes(randomNum)) ) {
+					else if (randomSubFolder < 0.60 && (pokemonPLA.includes(randomNum)) ) {
 						randomFolder = 'PLA';
 					}
+					else if (randomSubFolder < 0.80 && (pokemonPLZA.includes(randomNum)) ) {
+						randomFolder = 'PLZA';
+					}					
 					else if(randomSubFolder < 1 && randomNum <= 150){
 						randomFolder = 'LGPE';
 					}
@@ -164,7 +170,7 @@
 			var freeSpaceNumber = $('#freeSpaceNumber').val();
 			var freeSpaceGeneration = $('#freeSpaceGeneration').val();
 			var freeSpaceGenerationIcon = freeSpaceGeneration;
-			if (['PLA','BDSP','LGPE'].includes(freeSpaceGeneration)) {
+			if (['PLA','BDSP','LGPE','PLZA'].includes(freeSpaceGeneration)) {
 				freeSpaceGeneration = 'SS';
 			}
 			if (['USUM','SM'].includes(freeSpaceGeneration)) {
@@ -211,7 +217,7 @@
 				return;
 			}
 
-			if (['PLA','BDSP','LGPE'].includes(customSpaceGeneration)) {
+			if (['PLA','BDSP','LGPE','PLZA'].includes(customSpaceGeneration)) {
 				customSpaceGeneration = 'SS';
 			}
 			if (['USUM','SM'].includes(customSpaceGeneration)) {
