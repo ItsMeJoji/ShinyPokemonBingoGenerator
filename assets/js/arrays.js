@@ -2,7 +2,7 @@
 // Arrays for Site
 
 // Array of all the sprites
-const folders = ['SV', 'SS', 'SM', 'ORAS', 'USUM', 'XY', 'BW', 'DPPT', 'HGSS', 'GSC', 'RSE', 'C', 'XD'];
+const folders = ['SV', 'SS', 'SM', 'XY', 'BW', 'DPPT', 'HGSS', 'GSC', 'RSE', 'C', 'XD'];
 
 // Array of all the icons
 const icons = {
@@ -24,6 +24,42 @@ const icons = {
     'C': 'images/Icons/C.png',
     'XD': 'images/Icons/XD.png',
     'RSE': 'images/Icons/RSE.png'
+};
+
+// Array for Generation Selection
+const generations = {
+    'gen1': '1-151',
+    'gen2': '152-251',
+    'gen3': '252-386',
+    'gen4': '387-493',
+    'gen5': '494-649',
+    'gen6': '650-721',
+    'gen7': '722-809',
+    'gen8': '810-905',
+    'gen9': '906-1025'
+};
+
+// Array fir Game Selection
+const games = {
+    'GSC': 'GSC',
+    'RSE': 'RSE',
+    'FRLG': 'RSE',
+    'C': 'C',
+    'XD': 'XD',
+    'DPPT': 'DPPT',
+    'HGSS': 'HGSS',
+    'BW': 'BW',
+    'XY': 'XY',
+    'ORAS': 'ORAS',
+    'SM': 'SM',
+    'USUM': 'USUM',
+    'LGPE': 'LGPE',
+    'BDSP': 'BDSP',
+    'SS': 'SS',
+    'SV': 'SV',
+    'PLA': 'PLA',
+    'PLZA': 'PLZA'
+
 };
 
 // Array of all Pokemon in PLA

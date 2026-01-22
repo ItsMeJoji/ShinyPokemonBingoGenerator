@@ -15,36 +15,9 @@
 
 				<!-- Header -->
 					<header id="header">
-						<div class="logo">
+						<div class="logo" id="reroll">
 							<span class="fas fa-dice-d20"></span>
-						    </div>
-                            <div class="button-group-top">
-                                <button>Free Space: </button>
-                                <button>
-                                    <input id="freeSpaceNumber" min="1" max="1025" placeholder="Enter #" />
-                                </button>
-                                    <select id="freeSpaceGeneration">
-                                        <option value="PLZA">PLZA</option>
-                                        <option value="SV">SV</option>
-                                        <option value="PLA">PLA</option>
-                                        <option value="SS">SS</option>
-                                        <option value="BDSP">BDSP</option>
-                                        <option value="LGPE">LGPE</option>
-                                        <option value="USUM">USUM</option>
-                                        <option value="SM">SM</option>
-                                        <option value="ORAS">ORAS</option>
-                                        <option value="XY">XY</option>
-                                        <option value="BW">BW</option>
-                                        <option value="HGSS">HGSS</option>
-                                        <option value="DPPT">DPPT</option>
-                                        <option value="XD">XD</option>
-                                        <option value="C">COLO</option>
-                                        <option value="FRLG">FRLG</option>
-                                        <option value="RSE">RSE</option>
-                                        <option value="GSC">GSC</option>
-                                    </select>
-                                <button id="freeSpaceButton">Set</button>
-                            </div>
+                        </div>
                         <div class="content">
 							<div class="inner">
                                 <div id="exportArea">
@@ -229,6 +202,7 @@
                             <button id="exportButton">Export as PNG</button>
                             <button><a href="#intro">How to Use...</a></button>
                             <button onclick="window.location.href='custom-card.html'">Make a Custom Bingo Card</button>
+                            <button><a href="#settings">Settings</a></button>
                         </div>
 
                     </header>
@@ -238,17 +212,73 @@
                             <h2 class="major">How to Use...</h2>
                             <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
                             <ul>
-                                <li>When you load or refresh the page, you should get 15 randomized Pokemon with randomized Generation in each box of the Bingo Card.</li>
+                                <li>When you load, refresh, <strong>or click the 20-sided die</strong>, you should get 25 randomized Pokemon with randomized Games in each box of the Bingo Card.</li>
+                                <li>You can adjust options like Generation and Game by going to <a href="#settings"><strong>Settings</strong></a></li>
                                 <li>Clicking on the Pokemon image will randomize that specific box.</li>
-                                <li>Filling out the Fields on top will allow you to set the Pokemon and Generation of your choice. Click <b>Set</b> to set the center box.</li>
                                 <li>Clicking on the <b>Export as PNG</b> button will generate a PNG image of the Bingo Card.</li>
                                 <li>Clicking on the <b>Make a Custom Bingo Card</b> button will take you to a page where you can create your own Custom Bingo Card.</li>
                                 <li>Remember to check if the Pokemon is obtainable in the game you are playing!</li>
                                 <br>
-                                <p>TLDR; refresh to randomize, click to randomize, set the center as you like using Pokedex Number (1-1025) and Generation from dropdown, remember to check if Pokemon is obtainable!</p>
+                                <p><strong>TLDR: click 20-sided die to randomize, change Generation and Game options with Settings, remember to check if Pokemon is obtainable!</strong></p>
                             </ul>
                         </article>
+                        <article id="settings">
+                            <h2 class="major">Settings</h2>
+                            <span class="image main"><img src="images/pic01.jpg" alt="" /></span>
+                            <ul>
+                                <li>
+                                    <label><strong>Limit Pokémon by Generation or Game</strong></label>
+                                    <br>
+                                    <div class="setting-row">
+                                        <label for="generationSelect">Limit to generation:</label>
+                                        <select id="generationSelect">
+                                            <option value="all">All generations (default)</option>
+                                            <option value="gen1">Generation I (Kanto)</option>
+                                            <option value="gen2">Generation II (Johto)</option>
+                                            <option value="gen3">Generation III (Hoenn)</option>
+                                            <option value="gen4">Generation IV (Sinnoh)</option>
+                                            <option value="gen5">Generation V (Unova)</option>
+                                            <option value="gen6">Generation VI (Kalos)</option>
+                                            <option value="gen7">Generation VII (Alola)</option>
+                                            <option value="gen8">Generation VIII (Galar)</option>
+                                            <option value="gen9">Generation IX (Paldea)</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="setting-row">
+                                        <label for="gameInput">Or specify a game / release name:</label>
+                                        <select id="gameInput">
+                                            <option value="all">All games (default)</option>
+                                            <option value="GSC">Gold/Silver/Crystal</option>
+                                            <option value="RSE">Ruby/Sapphire/Emerald</option>
+                                            <option value="DPPT">Diamond/Pearl/Platinum</option>
+                                            <option value="HGSS">HeartGold/SoulSilver</option>
+                                            <option value="BW">Black/White & Black 2/White 2</option>
+                                            <option value="XY">X & Y</option>
+                                            <option value="ORAS">Omega Ruby/Alpha Sapphire</option>
+                                            <option value="SM">Sun/Moon & Ultra Sun/Ultra Moon</option>
+                                            <option value="LGPE">Let's Go Pikachu/Eevee</option>
+                                            <option value="SS">Sword & Shield</option>
+                                            <option value="BDSP">Brilliant Diamond/Shining Pearl</option>
+                                            <option value="SV">Scarlet/Violet</option>
+                                            <option value="PLA">Pokémon Legends Arceus</option>
+                                            <option value="PLZA">Pokémon Legends Z-A</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="setting-row">
+                                        <button id="applyLimitButton">Apply Filter</button>
+                                        <button id="clearLimitButton">Clear Filter</button>
+                                    </div>
+                                    <br>
+                                    <small>
+                                        When enabled, the generator will only pick Pokémon that belong to the chosen generation or the named game. Click "Apply Filter" to enforce the setting for subsequent randomizations.
+                                    </small>
+                                </li>
+                            </ul>
+                        </article>                        
                     </div>
+                    
                 </div>
 
                 <footer id="footer">
@@ -259,6 +289,7 @@
                     <div id="bg"></div>
                     
                     <!-- Scripts -->
+                    <!-- <script src="https://unpkg.com/pokeapi-js-wrapper/dist/index.js"></script> -->
                     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                     <script src="assets/js/arrays.js"></script>
                     <script src="assets/js/jquery.min.js"></script>

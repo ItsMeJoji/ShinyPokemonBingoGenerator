@@ -1724,7 +1724,7 @@ input, select, textarea {
     align-items: center;
 	padding-left: 2px;
 	padding-right: 2px;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr;
 }
 
 /* TODO Alter .image-contaner and img.pokemon to fix for mobile*/
